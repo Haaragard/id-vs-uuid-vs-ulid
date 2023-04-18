@@ -4,11 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class UserInfo extends Model
 {
     use HasFactory;
+
+    /**
+     * @var string
+     */
+    protected $table = 'user_infos';
 
     /**
      * The attributes that are mass assignable.
@@ -16,32 +21,36 @@ class UserInfo extends Model
      * @var array<int, string>
      */
     protected $fillable = [
+        'user_id',
+        'user_uuid',
+        'user_ulid',
         'name',
         'second_name',
+        'email',
         'second_email',
     ];
 
     /**
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function idUser(): HasOne
+    public function idUser(): BelongsTo
     {
-        return $this->hasOne(IdUser::class);
+        return $this->belongsTo(IdUser::class, 'user_id', 'id');
     }
 
     /**
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function UuidUser(): HasOne
+    public function uuidUser(): BelongsTo
     {
-        return $this->hasOne(UuidUser::class);
+        return $this->belongsTo(UuidUser::class, 'user_uuid', 'uuid');
     }
 
     /**
-     * @return HasOne
+     * @return BelongsTo
      */
-    public function UlidUser(): HasOne
+    public function ulidUser(): BelongsTo
     {
-        return $this->hasOne(UlidUser::class);
+        return $this->belongsTo(UlidUser::class, 'user_ulid', 'ulid');
     }
 }

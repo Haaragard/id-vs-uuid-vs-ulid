@@ -47,6 +47,6 @@ class IdUser extends Authenticatable
      */
     public function userInfos(): HasMany
     {
-        return $this->hasMany(UserInfo::class, 'user_id');
+        return $this->hasMany(UserInfo::class, 'user_id', 'id');
     }
 }

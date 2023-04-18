@@ -53,6 +53,6 @@ class UuidUser extends Authenticatable
      */
     public function userInfos(): HasMany
     {
-        return $this->hasMany(UserInfo::class, 'user_uuid');
+        return $this->hasMany(UserInfo::class, 'user_uuid', 'uuid');
     }
 }

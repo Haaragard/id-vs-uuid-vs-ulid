@@ -53,6 +53,6 @@ class UlidUser extends Authenticatable
      */
     public function userInfos(): HasMany
     {
-        return $this->hasMany(UserInfo::class, 'user_ulid');
+        return $this->hasMany(UserInfo::class, 'user_ulid', 'ulid');
     }
 }
